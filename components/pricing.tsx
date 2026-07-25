@@ -33,7 +33,7 @@ const pricingTiers = [
 export default function Pricing({ onBookNow }: PricingProps) {
   return (
     <section className="py-10 md:py-14 px-4 md:px-8 bg-background">
-      <div className="max-w-6xl mx-auto space-y-16">
+      <div className="max-w-7xl mx-auto space-y-16">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <span className="text-xs md:text-sm font-semibold text-accent tracking-widest uppercase mb-4 inline-block">

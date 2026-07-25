@@ -59,7 +59,7 @@ export default function ProcessSection({ onBookNow }: ProcessSectionProps) {
       {/* Background Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <span className="text-xs md:text-sm font-semibold text-accent tracking-widest uppercase mb-3 inline-block bg-accent/10 px-4 py-1.5 rounded-full border border-accent/20">

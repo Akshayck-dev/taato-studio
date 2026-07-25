@@ -48,7 +48,7 @@ const artists = [
 export default function Artists() {
   return (
     <section className="py-10 md:py-14 px-4 md:px-8 bg-secondary/5">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <span className="text-xs md:text-sm font-semibold text-accent tracking-widest uppercase mb-4 inline-block bg-accent/10 px-4 py-1 rounded-full border border-accent/20">

@@ -78,7 +78,7 @@ export default function Portfolio({ onBookNow }: PortfolioProps) {
 
   return (
     <section className="py-10 md:py-14 px-4 md:px-8 bg-background">
-      <div className="max-w-6xl mx-auto space-y-12">
+      <div className="max-w-7xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center mb-8">
           <span className="text-xs md:text-sm font-semibold text-accent tracking-widest uppercase mb-4 inline-block bg-accent/10 px-4 py-1 rounded-full border border-accent/20">
