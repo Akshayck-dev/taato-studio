@@ -198,3 +198,66 @@
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* ==========================================================================
+   Dedicated Responsive Media Queries (Mobile, Tablet, Desktop)
+   ========================================================================== */
+
+/* 📱 Mobile Screens (max-width: 639px) */
+@media (max-width: 639px) {
+  h1 {
+    font-size: 2.25rem !important; /* 36px */
+    line-height: 1.2 !important;
+  }
+  h2 {
+    font-size: 1.75rem !important; /* 28px */
+    line-height: 1.25 !important;
+  }
+  h3 {
+    font-size: 1.35rem !important; /* 21px */
+  }
+
+  section {
+    padding-top: 2.25rem !important;
+    padding-bottom: 2.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  button, a {
+    min-height: 42px;
+  }
+
+  .animate-marquee {
+    animation-duration: 18s !important;
+  }
+}
+
+/* 📱 Tablet Screens (min-width: 640px) and (max-width: 1023px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  section {
+    padding-top: 2.75rem !important;
+    padding-bottom: 3rem !important;
+  }
+  h1 {
+    font-size: 3.25rem !important;
+  }
+  h2 {
+    font-size: 2.25rem !important;
+  }
+}
+
+/* 🖥 Desktop Screens (min-width: 1024px) */
+@media (min-width: 1024px) {
+  section {
+    padding-top: 3.25rem;
+    padding-bottom: 4rem;
+  }
+
+  .desktop-hover-lift {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  }
+  .desktop-hover-lift:hover {
+    transform: translateY(-4px);
+  }
+}
