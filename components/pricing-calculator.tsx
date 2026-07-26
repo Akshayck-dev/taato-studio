@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Calculator, Clock, DollarSign, Sparkles, ShieldCheck, ArrowRight } from 'lucide-react'
+import { Calculator, Clock, Sparkles, ShieldCheck, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 interface PricingCalculatorProps {
@@ -37,38 +37,35 @@ export default function PricingCalculator({ onBookEstimate }: PricingCalculatorP
   const maxCost = Math.round(minCost * 1.25)
 
   return (
-    <div className="bg-card border border-border rounded-2xl p-6 md:p-10 shadow-xl relative overflow-hidden">
-      {/* Background Accent */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="flex items-center gap-3 mb-8">
-        <div className="p-3 rounded-xl bg-accent/10 text-accent border border-accent/20">
-          <Calculator className="w-6 h-6" />
+    <div className="bg-card border border-border rounded-xl p-5 md:p-8">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="p-2 rounded-lg bg-accent/8 text-accent">
+          <Calculator className="w-5 h-5" />
         </div>
         <div>
-          <span className="text-xs uppercase tracking-wider text-accent font-bold">Interactive Tool</span>
-          <h3 className="text-2xl font-serif font-bold text-foreground">Instant Estimate Calculator</h3>
+          <span className="text-[10px] uppercase tracking-wider text-accent font-bold">Interactive Tool</span>
+          <h3 className="text-lg font-serif font-bold text-foreground">Estimate Calculator</h3>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Inputs */}
-        <div className="lg:col-span-7 space-y-6">
+        <div className="lg:col-span-7 space-y-5">
           {/* Placement Selection */}
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-foreground/70 mb-3">
+            <label className="block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-2">
               1. Select Placement Area
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {placements.map((p) => (
                 <button
                   key={p.id}
                   type="button"
                   onClick={() => setSelectedPlacement(p.id)}
-                  className={`p-3 rounded-lg text-xs font-semibold text-left transition-all ${
+                  className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                     selectedPlacement === p.id
-                      ? 'bg-accent text-accent-foreground shadow-md shadow-accent/20'
-                      : 'bg-secondary/60 text-foreground/70 border border-border/80 hover:border-accent/40'
+                      ? 'bg-accent text-white'
+                      : 'bg-secondary/40 text-muted-foreground border border-border/80 hover:border-accent/40'
                   }`}
                 >
                   {p.label}
@@ -79,11 +76,11 @@ export default function PricingCalculator({ onBookEstimate }: PricingCalculatorP
 
           {/* Size Slider */}
           <div>
-            <div className="flex justify-between items-center mb-3">
-              <label className="text-xs font-semibold uppercase tracking-wider text-foreground/70">
+            <div className="flex justify-between items-center mb-2">
+              <label className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                 2. Approximate Size (Inches)
               </label>
-              <span className="text-sm font-serif font-bold text-accent px-3 py-1 bg-accent/10 rounded-md border border-accent/20">
+              <span className="text-xs font-serif font-bold text-accent px-2 py-0.5 bg-accent/10 rounded border border-accent/20">
                 {sizeInches} inches ({Math.round(sizeInches * 2.54)} cm)
               </span>
             </div>
@@ -94,9 +91,9 @@ export default function PricingCalculator({ onBookEstimate }: PricingCalculatorP
               step="1"
               value={sizeInches}
               onChange={(e) => setSizeInches(Number(e.target.value))}
-              className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer accent-accent"
+              className="w-full h-1 bg-secondary rounded-lg appearance-none cursor-pointer accent-accent"
             />
-            <div className="flex justify-between text-[11px] text-foreground/40 mt-1 font-mono">
+            <div className="flex justify-between text-[10px] text-muted-foreground mt-1.5 font-mono">
               <span>Small (2")</span>
               <span>Medium (6")</span>
               <span>Large (10")</span>
@@ -106,19 +103,19 @@ export default function PricingCalculator({ onBookEstimate }: PricingCalculatorP
 
           {/* Style Selector */}
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-foreground/70 mb-3">
+            <label className="block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-2">
               3. Artistic Style Complexity
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {styles.map((s) => (
                 <button
                   key={s.id}
                   type="button"
                   onClick={() => setSelectedStyle(s.id)}
-                  className={`p-3 rounded-lg text-xs font-semibold text-left transition-all ${
+                  className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                     selectedStyle === s.id
-                      ? 'bg-accent text-accent-foreground shadow-md shadow-accent/20'
-                      : 'bg-secondary/60 text-foreground/70 border border-border/80 hover:border-accent/40'
+                      ? 'bg-accent text-white'
+                      : 'bg-secondary/40 text-muted-foreground border border-border/80 hover:border-accent/40'
                   }`}
                 >
                   {s.label}
@@ -129,43 +126,43 @@ export default function PricingCalculator({ onBookEstimate }: PricingCalculatorP
         </div>
 
         {/* Right Live Estimate Display Box */}
-        <div className="lg:col-span-5 bg-gradient-to-br from-secondary/80 to-background border border-accent/30 rounded-xl p-6 relative flex flex-col justify-between">
-          <div className="space-y-6">
-            <div className="flex justify-between items-start border-b border-border/60 pb-4">
+        <div className="lg:col-span-5 bg-secondary/20 border border-border rounded-xl p-5 flex flex-col justify-between self-stretch">
+          <div className="space-y-5">
+            <div className="flex justify-between items-start border-b border-border/40 pb-4">
               <div>
-                <span className="text-xs text-foreground/50 uppercase tracking-wider">Estimated Price Range</span>
-                <div className="text-3xl font-serif font-bold text-accent mt-1">
+                <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Estimated Price Range</span>
+                <div className="text-2xl font-serif font-bold text-accent mt-0.5">
                   ${minCost} - ${maxCost}
                 </div>
               </div>
-              <span className="bg-accent/10 text-accent text-[11px] font-bold px-2.5 py-1 rounded border border-accent/20">
+              <span className="bg-accent/8 text-accent text-[10px] font-semibold px-2 py-0.5 rounded border border-accent/15">
                 Transparent Quote
               </span>
             </div>
 
-            <div className="space-y-3 text-xs text-foreground/70">
+            <div className="space-y-2.5 text-xs text-muted-foreground">
               <div className="flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5 text-accent" /> Estimated Session Time:
                 </span>
-                <span className="font-bold text-foreground">{calculatedHours} - {calculatedHours + 1} Hours</span>
+                <span className="font-semibold text-foreground">{calculatedHours} - {calculatedHours + 1} Hours</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-accent" /> Custom Stencil Fee:
                 </span>
-                <span className="font-bold text-emerald-400">Included ($0)</span>
+                <span className="font-semibold text-emerald-400">Included ($0)</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-accent" /> 90-Day Touch-Up:
                 </span>
-                <span className="font-bold text-emerald-400">Included ($0)</span>
+                <span className="font-semibold text-emerald-400">Included ($0)</span>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 pt-4 border-t border-border/60">
+          <div className="mt-6 pt-4 border-t border-border/40">
             <Button
               onClick={() =>
                 onBookEstimate?.({
@@ -175,11 +172,11 @@ export default function PricingCalculator({ onBookEstimate }: PricingCalculatorP
                   estimate: `$${minCost} - $${maxCost}`,
                 })
               }
-              className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-5 rounded-lg text-sm"
+              className="w-full bg-accent hover:bg-[#FF5A5F] text-white font-medium h-10 px-5 text-sm"
             >
-              Book With This Estimate <ArrowRight className="w-4 h-4 ml-2" />
+              Book With This Estimate <ArrowRight className="w-4 h-4 ml-1.5" />
             </Button>
-            <p className="text-[11px] text-center text-foreground/50 mt-2">
+            <p className="text-[10px] text-center text-muted-foreground/60 mt-2">
               Final quote confirmed during your 1-on-1 stencil fitting.
             </p>
           </div>

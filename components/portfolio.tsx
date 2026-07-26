@@ -3,10 +3,13 @@
 import { useState } from 'react'
 import { ZoomIn, X, Clock, User, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { motion, AnimatePresence } from 'framer-motion'
 import CoverupSlider from './coverup-slider'
 
 interface PortfolioProps {
   onBookNow?: () => void
+  previewOnly?: boolean
+  onViewFullGallery?: () => void
 }
 
 const portfolioItems = [
@@ -53,7 +56,7 @@ const portfolioItems = [
     artist: 'Marcus Reid',
     time: '7 hours',
     image: 'https://images.unsplash.com/photo-1550537687-c91072c4792d?auto=format&fit=crop&w=800&q=80',
-    desc: 'Photorealistic lion portrait with smooth depth, textured mane fur, and dimensional eye contrast.',
+    desc: 'Photorealistic lion portrait with smooth depth, textured theme fur, and dimensional eye contrast.',
   },
   {
     id: '6',
@@ -68,142 +71,227 @@ const portfolioItems = [
 
 const categories = ['All', 'Fine Line', 'Realism', 'Traditional', 'Watercolor', 'Contemporary']
 
-export default function Portfolio({ onBookNow }: PortfolioProps) {
+export default function Portfolio({ onBookNow, previewOnly = false, onViewFullGallery }: PortfolioProps) {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [activeItem, setActiveItem] = useState<typeof portfolioItems[0] | null>(null)
 
   const filteredItems = portfolioItems.filter(
-    (item) => selectedCategory === 'All' || item.category === selectedCategory
+    (item) => previewOnly || selectedCategory === 'All' || item.category === selectedCategory
   )
 
+  const displayedItems = previewOnly ? filteredItems.slice(0, 6) : filteredItems
+
   return (
-    <section className="py-10 md:py-14 px-4 md:px-8 bg-background">
+    <section className="px-4 md:px-8 bg-background">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Header */}
-        <div className="text-center mb-8">
-          <span className="text-xs md:text-sm font-semibold text-accent tracking-widest uppercase mb-4 inline-block bg-accent/10 px-4 py-1 rounded-full border border-accent/20">
-            Our Portfolio
-          </span>
-          <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4 text-foreground">
-            Gallery of Masterpieces
-          </h2>
-          <p className="text-base md:text-lg text-foreground/60 max-w-2xl mx-auto">
+        <div className="text-center">
+          <span className="text-xs font-medium text-accent tracking-wider uppercase">Our Portfolio</span>
+          <h2 className="mt-3 text-foreground">Gallery of Masterpieces</h2>
+          <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
             Browse authentic custom tattoos crafted by our award-winning resident artists.
           </p>
         </div>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-2">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all ${
-                selectedCategory === cat
-                  ? 'bg-accent text-accent-foreground shadow-md shadow-accent/20 scale-105'
-                  : 'bg-card border border-border text-foreground/70 hover:border-accent/40'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+        {/* Filter Tabs - Hide on preview mode */}
+        {!previewOnly && (
+          <div className="flex flex-wrap justify-center gap-1 border-b border-border/30 pb-px">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`relative px-4 py-2.5 text-xs md:text-sm font-medium transition-colors ${
+                  selectedCategory === cat
+                    ? 'text-foreground'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                {cat}
+                {selectedCategory === cat && (
+                  <motion.span
+                    layoutId="portfolio-indicator"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent rounded-full"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+        )}
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => setActiveItem(item)}
-              className="group relative overflow-hidden rounded-xl aspect-[4/5] bg-card border border-border hover:border-accent/60 transition-all duration-300 hover:shadow-xl hover:shadow-accent/10 cursor-pointer"
-            >
-              {/* Tattoo Image */}
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+        {/* Gallery Grid & Mobile/Tablet Touch Swipe Carousel */}
+        <motion.div layout className="-mx-4 px-4 flex overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:mx-0 md:px-0 md:pb-0 gap-5">
+          <AnimatePresence mode="popLayout">
+            {displayedItems.map((item) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                key={item.id}
+                onClick={() => setActiveItem(item)}
+                className="group relative overflow-hidden rounded-xl aspect-square bg-card border border-border hover:border-accent/30 transition-all duration-300 cursor-pointer w-[260px] sm:w-[300px] shrink-0 snap-center md:w-auto md:shrink"
+              >
+                {/* Tattoo Image */}
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
+                />
 
-              {/* Gradient & Overlay Info */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-6 flex flex-col justify-between">
-                <div className="flex justify-between items-start">
-                  <span className="bg-accent/80 text-accent-foreground text-xs font-bold px-3 py-1 rounded-full uppercase shadow">
-                    {item.category}
-                  </span>
-                  <div className="w-9 h-9 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white group-hover:bg-accent group-hover:text-accent-foreground transition-all">
-                    <ZoomIn className="w-4 h-4" />
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-5 flex flex-col justify-between">
+                  <div className="flex justify-between items-start">
+                    <span className="bg-accent/80 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">
+                      {item.category}
+                    </span>
+                    <div className="w-8 h-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white">
+                      <ZoomIn className="w-4 h-4" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-base font-serif font-bold text-white mb-0.5">
+                      {item.title}
+                    </h3>
+                    <p className="text-[11px] text-white/70 flex items-center gap-1">
+                      <User className="w-3 h-3 text-accent" /> by {item.artist}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* View Full Gallery CTA */}
+        {previewOnly && onViewFullGallery && (
+          <div className="flex justify-center pt-4">
+            <Button
+              onClick={onViewFullGallery}
+              variant="outline"
+              className="border-border text-foreground hover:bg-secondary font-medium h-10 px-6 text-sm"
+            >
+              View Full Gallery →
+            </Button>
+          </div>
+        )}
+
+        {/* Before & After Cover-Up Slider Component - Hide on preview mode */}
+        {!previewOnly && <CoverupSlider />}
+
+        {/* Zoom Lightbox Modal */}
+        <AnimatePresence>
+          {activeItem && (
+            <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="bg-card border border-border rounded-xl max-w-xl w-full p-5 relative shadow-2xl"
+              >
+                <button
+                  onClick={() => setActiveItem(null)}
+                  className="absolute top-4 right-4 p-1.5 rounded-full bg-secondary text-muted-foreground hover:text-foreground hover:bg-accent/15 transition-all z-10"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+
+                <div className="h-64 md:h-72 rounded-lg overflow-hidden mb-5 relative border border-border">
+                  <img
+                    src={activeItem.image}
+                    alt={activeItem.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-5 flex flex-col justify-end">
+                    <span className="bg-accent text-white text-[10px] font-bold px-2 py-0.5 rounded w-max mb-1.5">
+                      {activeItem.category}
+                    </span>
+                    <h3 className="text-xl font-serif font-bold text-white">{activeItem.title}</h3>
                   </div>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-serif font-bold text-white mb-1 group-hover:text-accent transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-white/80 flex items-center gap-1">
-                    <User className="w-3 h-3 text-accent" /> by {item.artist}
-                  </p>
+                <div className="space-y-4">
+                  <p className="text-sm text-muted-foreground leading-relaxed">{activeItem.desc}</p>
+
+                  <div className="flex items-center justify-between text-xs text-muted-foreground border-y border-border/50 py-2.5">
+                    <span className="flex items-center gap-1">
+                      <User className="w-3.5 h-3.5 text-accent" /> Artist: <strong className="text-foreground font-medium">{activeItem.artist}</strong>
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-accent" /> Duration: <strong className="text-foreground font-medium">{activeItem.time}</strong>
+                    </span>
+                  </div>
+
+                  <div className="pt-1 flex gap-2">
+                    <Button
+                      onClick={() => {
+                        setActiveItem(null)
+                        onBookNow?.()
+                      }}
+                      className="flex-grow bg-accent hover:bg-[#FF5A5F] text-white font-medium h-10 px-5 text-sm"
+                    >
+                      Book This Style <ArrowRight className="w-4 h-4 ml-1.5" />
+                    </Button>
+                    <ShareButton item={activeItem} />
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          ))}
-        </div>
-
-        {/* Before & After Cover-Up Slider Component */}
-        <CoverupSlider />
-
-        {/* Zoom Lightbox Modal */}
-        {activeItem && (
-          <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-            <div className="bg-card border border-border rounded-2xl max-w-xl w-full p-6 md:p-8 relative shadow-2xl animate-in fade-in zoom-in duration-200">
-              <button
-                onClick={() => setActiveItem(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-secondary text-foreground hover:bg-accent hover:text-accent-foreground transition-all z-10"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <div className="h-64 rounded-xl overflow-hidden mb-6 relative border border-accent/20">
-                <img
-                  src={activeItem.image}
-                  alt={activeItem.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-6 flex flex-col justify-end">
-                  <span className="bg-accent text-accent-foreground text-xs font-bold px-3 py-1 rounded-full w-max mb-2">
-                    {activeItem.category}
-                  </span>
-                  <h3 className="text-3xl font-serif font-bold text-white">{activeItem.title}</h3>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <p className="text-sm text-foreground/80 leading-relaxed">{activeItem.desc}</p>
-
-                <div className="flex items-center justify-between text-xs text-foreground/60 border-y border-border py-3">
-                  <span className="flex items-center gap-1.5">
-                    <User className="w-4 h-4 text-accent" /> Artist: <strong className="text-foreground">{activeItem.artist}</strong>
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4 text-accent" /> Duration: <strong className="text-foreground">{activeItem.time}</strong>
-                  </span>
-                </div>
-
-                <div className="flex gap-3 pt-2">
-                  <Button
-                    onClick={() => {
-                      setActiveItem(null)
-                      onBookNow?.()
-                    }}
-                    className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-5 rounded-lg"
-                  >
-                    Book This Style <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+          )}
+        </AnimatePresence>
       </div>
     </section>
+  )
+}
+
+function ShareButton({ item }: { item: typeof portfolioItems[0] | null }) {
+  const [copied, setCopied] = useState(false)
+
+  const handleShare = async () => {
+    if (!item) return
+    const shareText = `Check out this amazing "${item.title}" tattoo by ${item.artist} at Ink Collective!`
+    const shareUrl = typeof window !== 'undefined' ? `${window.location.origin}/?artwork=${item.id}` : ''
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: item.title,
+          text: shareText,
+          url: shareUrl,
+        })
+      } catch (err) {
+        console.error('Error sharing:', err)
+      }
+    } else {
+      // Fallback: Copy to clipboard
+      try {
+        await navigator.clipboard.writeText(`${shareText} ${shareUrl}`)
+        setCopied(true)
+        setTimeout(() => setCopied(false), 2000)
+      } catch (err) {
+        console.error('Failed to copy text:', err)
+      }
+    }
+  }
+
+  return (
+    <Button
+      onClick={handleShare}
+      variant="outline"
+      className="border-border text-foreground hover:bg-secondary font-medium h-10 px-4 text-sm flex items-center gap-1.5 min-w-[90px] justify-center transition-colors"
+    >
+      {copied ? (
+        'Copied!'
+      ) : (
+        <>
+          <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13" />
+          </svg>
+          Share
+        </>
+      )}
+    </Button>
   )
 }

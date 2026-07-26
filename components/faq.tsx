@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const faqs = [
   {
@@ -36,42 +37,52 @@ const faqs = [
   },
 ]
 
-function FAQItem({ id, question, answer }: { id: string; question: string; answer: string }) {
+function FAQItem({ question, answer }: { id: string; question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="border-b border-border last:border-b-0">
+    <div className="border-b border-border/50 last:border-b-0">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-4 md:py-6 flex items-start justify-between gap-4 hover:text-accent transition-colors text-left group"
+        className="w-full py-5 flex items-center justify-between gap-4 text-left group"
       >
-        <span className="font-semibold text-base md:text-lg group-hover:text-accent transition-colors">{question}</span>
-        <ChevronDown className={`w-5 h-5 flex-shrink-0 mt-1 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <span className="font-medium text-foreground text-[15px] group-hover:text-accent transition-colors">{question}</span>
+        <ChevronDown className={`w-4 h-4 flex-shrink-0 text-muted-foreground transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
-      {isOpen && <p className="pb-4 md:pb-6 text-foreground/60 text-sm md:text-base">{answer}</p>}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden"
+          >
+            <p className="pb-5 text-muted-foreground text-sm leading-relaxed">{answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
 
 export default function FAQ() {
   return (
-    <section className="py-10 md:py-14 px-4 md:px-8 bg-secondary/5">
+    <section className="px-4 md:px-8 bg-background">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <span className="text-xs md:text-sm font-semibold text-accent tracking-widest uppercase mb-4 inline-block">
-            Questions?
-          </span>
-          <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">
-            Frequently Asked Questions
-          </h2>
+        <div className="text-center mb-12">
+          <span className="text-xs font-medium text-accent tracking-wider uppercase">Questions?</span>
+          <h2 className="mt-3 text-foreground">Frequently Asked Questions</h2>
         </div>
 
         {/* FAQs */}
-        <div className="bg-card border border-border rounded-lg divide-y divide-border">
-          {faqs.map((faq) => (
-            <FAQItem key={faq.id} {...faq} />
-          ))}
+        <div className="bg-card border border-border rounded-xl p-1 md:p-2">
+          <div className="divide-y divide-border/30 px-4 md:px-6">
+            {faqs.map((faq) => (
+              <FAQItem key={faq.id} {...faq} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
