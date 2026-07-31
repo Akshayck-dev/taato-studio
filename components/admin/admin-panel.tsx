@@ -99,16 +99,18 @@ const mockBookings: BookingItem[] = [
   },
 ]
 
+import { useBooking } from '@/contexts/booking-context'
+
 export interface AdminPanelProps {
   onLogout?: () => void
 }
 
 export default function AdminPanel({ onLogout }: AdminPanelProps) {
+  const { bookings, updateBookingStatus } = useBooking()
   const [activeTab, setActiveTab] = useState<'dashboard' | 'bookings' | 'portfolio' | 'artists' | 'services' | 'settings'>('dashboard')
   const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState<string>('All')
-  const [bookings, setBookings] = useState<BookingItem[]>(mockBookings)
-  const [selectedBooking, setSelectedBooking] = useState<BookingItem | null>(null)
+  const [selectedBooking, setSelectedBooking] = useState<any | null>(null)
 
   const [servicesList, setServicesList] = useState([
     { name: 'Custom Design Session', rate: '$250 starting', duration: '2–6 hours' },
@@ -519,11 +521,7 @@ export default function AdminPanel({ onLogout }: AdminPanelProps) {
                     </Button>
                     <Button
                       onClick={() => {
-                        setBookings(
-                          bookings.map((item) =>
-                            item.id === selectedBooking.id ? { ...item, status: 'Confirmed', depositStatus: 'Paid' } : item
-                          )
-                        )
+                        updateBookingStatus(selectedBooking.id, 'Confirmed', 'Paid')
                         setSelectedBooking(null)
                       }}
                       size="sm"

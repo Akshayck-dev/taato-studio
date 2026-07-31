@@ -59,105 +59,115 @@ export default function StyleShowcase({ onExplorePortfolio, onBookNow }: StyleSh
 
   return (
     <section className="px-4 md:px-8 bg-background">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <span className="text-xs font-medium text-accent tracking-wider uppercase">Artistic Mastery</span>
-          <h2 className="mt-3 text-foreground">Explore Tattoo Styles</h2>
-          <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
+          <span className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold tracking-widest uppercase mb-4 border border-accent/20">
+            Artistic Mastery
+          </span>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground">Explore Tattoo Styles</h2>
+          <p className="mt-4 text-muted-foreground max-w-lg mx-auto text-base">
             Find the perfect artistic aesthetic for your next custom piece.
           </p>
         </div>
 
-        {/* Style Tabs — underline style */}
-        <div className="flex flex-wrap justify-center gap-1 mb-10 border-b border-border/30 pb-px">
+        {/* Style Tabs — Pill style */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
           {stylesData.map((style) => (
             <button
               key={style.id}
               onClick={() => setSelectedStyle(style.id)}
-              className={`relative px-4 py-3 text-sm font-medium transition-colors ${
+              className={`relative px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                 selectedStyle === style.id
-                  ? 'text-foreground'
-                  : 'text-muted-foreground hover:text-foreground'
+                  ? 'text-white shadow-md shadow-accent/20'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-secondary/80'
               }`}
             >
-              {style.name}
               {selectedStyle === style.id && (
-                <motion.span
-                  layoutId="style-indicator"
-                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent rounded-full"
-                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                <motion.div
+                  layoutId="style-pill"
+                  className="absolute inset-0 bg-accent rounded-full z-0"
+                  transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                 />
               )}
+              <span className="relative z-10">{style.name}</span>
             </button>
           ))}
         </div>
 
         {/* Showcase Card */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current.id}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            className="bg-card border border-border rounded-xl p-6 md:p-10"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-7 space-y-5">
-                <div className="flex items-center gap-3">
-                  <span className="bg-accent/10 text-accent text-xs font-medium px-2.5 py-1 rounded-md border border-accent/15">
-                    {current.tag}
-                  </span>
-                  <span className="text-xs text-muted-foreground flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-accent" /> Est. {current.time}
-                  </span>
-                </div>
-
-                <h3 className="text-xl md:text-2xl font-serif font-bold text-foreground">{current.name}</h3>
-                <p className="text-muted-foreground leading-relaxed">{current.description}</p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
-                  {current.features.map((feat, i) => (
-                    <div key={i} className="bg-secondary/30 border border-border/40 p-3 rounded-lg text-xs text-muted-foreground flex items-center gap-2">
-                      <Sparkles className="w-3.5 h-3.5 text-accent flex-shrink-0" />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-3 pt-3">
-                  <Button onClick={onBookNow} className="bg-accent hover:bg-[#FF5A5F] text-white font-medium h-10 px-5 text-sm">
-                    Book This Style <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                  <Button onClick={onExplorePortfolio} variant="outline" className="border-border text-foreground hover:bg-secondary font-medium h-10 px-5 text-sm">
-                    View Gallery
-                  </Button>
-                </div>
-              </div>
-
-              {/* Right Visual */}
-              <div className="lg:col-span-5">
-                <div className="rounded-xl p-6 bg-secondary/20 border border-border/50 space-y-4">
-                  <div className="flex justify-between items-start">
-                    <div className="p-2.5 bg-accent/10 rounded-lg border border-accent/20">
-                      <Layers className="w-6 h-6 text-accent" />
-                    </div>
-                    <div className="flex items-center gap-1 bg-card px-2.5 py-1 rounded-full border border-border text-xs">
-                      <Star className="w-3 h-3 text-accent fill-accent" />
-                      <span className="font-medium text-foreground">{current.rating}</span>
-                    </div>
+        <div className="relative group">
+          {/* Subtle background glow */}
+          <div className="absolute -inset-4 bg-gradient-to-r from-accent/5 via-accent/10 to-transparent rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, scale: 0.98, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.98, y: -10 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="relative bg-card border border-border/60 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] rounded-3xl p-8 md:p-12 overflow-hidden"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-center">
+                <div className="lg:col-span-7 space-y-6">
+                  <div className="flex items-center gap-3">
+                    <span className="bg-accent/10 text-accent text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border border-accent/20">
+                      {current.tag}
+                    </span>
+                    <span className="text-sm font-medium text-muted-foreground flex items-center gap-1.5">
+                      <Clock className="w-4 h-4 text-accent/80" /> Est. {current.time}
+                    </span>
                   </div>
-                  <div>
-                    <span className="text-[10px] uppercase tracking-wider text-accent font-medium">Resident Specialist</span>
-                    <h4 className="text-lg font-serif font-bold text-foreground mt-0.5">{current.artist}</h4>
-                    <p className="text-xs text-muted-foreground mt-1">Top-rated specialist in {current.name}</p>
+
+                  <h3 className="text-3xl md:text-4xl font-serif font-bold text-foreground leading-tight">{current.name}</h3>
+                  <p className="text-muted-foreground text-base md:text-lg leading-relaxed">{current.description}</p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                    {current.features.map((feat, i) => (
+                      <div key={i} className="bg-secondary/50 p-4 rounded-2xl text-xs md:text-sm text-foreground/80 font-medium flex flex-col gap-2 border border-border/40 hover:border-accent/30 transition-colors">
+                        <Sparkles className="w-4 h-4 text-accent flex-shrink-0" />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-4 pt-6">
+                    <Button onClick={onBookNow} className="bg-accent hover:bg-[#FF5A5F] text-white font-medium h-12 px-8 rounded-xl shadow-lg shadow-accent/20 transition-all hover:-translate-y-0.5">
+                      Book This Style <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                    <Button onClick={onExplorePortfolio} variant="outline" className="border-border text-foreground hover:bg-secondary font-medium h-12 px-8 rounded-xl transition-all hover:-translate-y-0.5">
+                      View Gallery
+                    </Button>
                   </div>
                 </div>
+
+                {/* Right Visual */}
+                <div className="lg:col-span-5 h-full">
+                  <div className="h-full rounded-2xl p-8 bg-gradient-to-br from-secondary via-card to-secondary/50 border border-border/60 flex flex-col justify-between min-h-[300px] relative overflow-hidden group-hover:border-accent/30 transition-colors duration-500">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -mr-20 -mt-20" />
+                    
+                    <div className="flex justify-between items-start relative z-10">
+                      <div className="p-4 bg-background rounded-2xl border border-border/80 shadow-sm">
+                        <Layers className="w-7 h-7 text-accent" />
+                      </div>
+                      <div className="flex items-center gap-1.5 bg-background px-3 py-1.5 rounded-full border border-border/80 shadow-sm text-sm">
+                        <Star className="w-4 h-4 text-accent fill-accent" />
+                        <span className="font-bold text-foreground">{current.rating}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="relative z-10 pt-12">
+                      <span className="text-xs font-bold uppercase tracking-widest text-accent mb-2 block">Resident Specialist</span>
+                      <h4 className="text-2xl font-serif font-bold text-foreground mb-2">{current.artist}</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">Top-rated master specialist dedicated exclusively to the {current.name} craft.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   )

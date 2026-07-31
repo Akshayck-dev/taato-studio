@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'dark',
+  colorScheme: 'light',
   themeColor: '#E53935',
   width: 'device-width',
   initialScale: 1,
@@ -47,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark" style={{ '--font-sans': inter.style.fontFamily, '--font-serif': playfairDisplay.style.fontFamily } as React.CSSProperties}>
+    <html lang="en" style={{ '--font-sans': inter.style.fontFamily, '--font-serif': playfairDisplay.style.fontFamily } as React.CSSProperties}>
       <body className={`antialiased ${inter.className}`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

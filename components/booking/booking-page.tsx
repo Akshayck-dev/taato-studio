@@ -11,11 +11,14 @@ import BookingStep5 from './step-5-details'
 import BookingStep6 from './step-6-contact'
 import BookingStep7 from './step-7-review'
 
+import { useBooking } from '@/contexts/booking-context'
+
 interface BookingPageProps {
   onClose?: () => void
 }
 
 export default function BookingPage({ onClose }: BookingPageProps) {
+  const { addBooking } = useBooking()
   const [currentStep, setCurrentStep] = useState(1)
   const [bookingData, setBookingData] = useState({
     service: '',
@@ -51,8 +54,20 @@ export default function BookingPage({ onClose }: BookingPageProps) {
   }
 
   const handleSubmit = () => {
-    console.log('Booking submitted:', bookingData)
-    alert('Thank you! We\'ll confirm your appointment soon.')
+    addBooking({
+      clientName: bookingData.name || 'Client',
+      email: bookingData.email || 'client@example.com',
+      phone: bookingData.phone || '+1 (555) 000-0000',
+      service: bookingData.service || 'Custom Tattoo',
+      artist: bookingData.artist || 'Elena Vasquez',
+      date: bookingData.date ? bookingData.date.toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+      time: bookingData.time || '02:00 PM',
+      depositStatus: 'Pending',
+      status: 'Pending',
+      placement: 'Requested Placement',
+      size: bookingData.details || 'Custom Size',
+    })
+    alert("Thank you! Your appointment has been sent directly to the studio admin.")
     if (onClose) {
       onClose()
     }

@@ -3,7 +3,6 @@
 import { Button } from '@/components/ui/button'
 import { Check } from 'lucide-react'
 import { motion } from 'framer-motion'
-import PricingCalculator from './pricing-calculator'
 
 interface PricingProps {
   onBookNow?: () => void
@@ -34,7 +33,7 @@ const pricingTiers = [
 export default function Pricing({ onBookNow }: PricingProps) {
   return (
     <section className="px-4 md:px-8 bg-background">
-      <div className="max-w-7xl mx-auto space-y-16">
+      <div className="max-w-7xl mx-auto space-y-10 lg:space-y-12">
         {/* Header */}
         <div className="text-center">
           <span className="text-xs font-medium text-accent tracking-wider uppercase">Transparent Pricing</span>
@@ -95,8 +94,6 @@ export default function Pricing({ onBookNow }: PricingProps) {
           ))}
         </div>
 
-        {/* Calculator */}
-        <PricingCalculator onBookEstimate={() => onBookNow?.()} />
       </div>
     </section>
   )

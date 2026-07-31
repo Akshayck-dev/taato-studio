@@ -92,9 +92,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-border/60 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-border/60 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <p className="text-xs text-muted-foreground">© 2025 Ink Collective. All rights reserved.</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</a>
             <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Terms of Service</a>
             <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Accessibility</a>
