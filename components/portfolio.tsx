@@ -82,7 +82,7 @@ export default function Portfolio({ onBookNow, previewOnly = false, onViewFullGa
   const displayedItems = previewOnly ? filteredItems.slice(0, 4) : filteredItems
 
   return (
-    <section className="px-4 md:px-8 py-16 md:py-24 lg:py-28 bg-background">
+    <section className="px-4 md:px-8 py-6 md:py-10 lg:py-12 bg-background">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center">

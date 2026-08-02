@@ -40,7 +40,7 @@ export default function Hero({ onBookNow, onViewPortfolio }: HeroProps) {
   }, [])
 
   return (
-    <section className="relative min-h-[100dvh] bg-background overflow-hidden flex items-center px-4 sm:px-6 md:px-8 pt-40 sm:pt-44 md:pt-48 pb-16 sm:pb-20 md:pb-24 lg:pt-40 lg:pb-20">
+    <section className="relative min-h-[100dvh] bg-background overflow-hidden flex items-center px-4 sm:px-6 md:px-8 pt-40 sm:pt-44 md:pt-48 pb-8 sm:pb-10 md:pb-12 lg:pt-40 lg:pb-10">
       {/* Dynamic Background Image */}
       <div className="absolute inset-0 z-0 bg-black">
         

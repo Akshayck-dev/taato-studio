@@ -57,7 +57,7 @@ export default function Artists({ previewOnly = false, onViewAllArtists, onBookN
   const displayedArtists = previewOnly ? artists.slice(0, 3) : artists
 
   return (
-    <section className="px-4 md:px-8 py-16 md:py-24 lg:py-28 bg-background">
+    <section className="px-4 md:px-8 py-6 md:py-10 lg:py-12 bg-background">
       <div className="max-w-7xl mx-auto space-y-10">
         {/* Header */}
         <div className="text-center">

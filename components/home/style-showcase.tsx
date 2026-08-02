@@ -62,7 +62,7 @@ export default function StyleShowcase({ onExplorePortfolio, onBookNow }: StyleSh
   const current = stylesData.find((s) => s.id === selectedStyle) || stylesData[0]
 
   return (
-    <section className="py-16 md:py-24 lg:py-28 bg-[#0a0a0a]">
+    <section className="py-6 md:py-10 lg:py-12 bg-[#0a0a0a]">
       <div className="max-w-[90rem] mx-auto px-4 md:px-8">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 border-b border-white/10 pb-12">
