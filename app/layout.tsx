@@ -41,6 +41,8 @@ export const viewport: Viewport = {
   maximumScale: 1,
 }
 
+import WhatsAppButton from '@/components/whatsapp-button'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -50,6 +52,7 @@ export default function RootLayout({
     <html lang="en" style={{ '--font-sans': inter.style.fontFamily, '--font-serif': playfairDisplay.style.fontFamily } as React.CSSProperties}>
       <body className={`antialiased ${inter.className}`}>
         {children}
+        <WhatsAppButton />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
