@@ -28,7 +28,7 @@ const standards = [
 
 export default function SafetySection() {
   return (
-    <section className="px-4 md:px-8 bg-secondary/5 border-y border-border/40">
+    <section className="px-4 md:px-8 py-16 md:py-24 lg:py-28 bg-secondary/5 border-y border-border/40">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

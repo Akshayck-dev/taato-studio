@@ -10,7 +10,7 @@ interface ConsultationCTAProps {
 
 export default function ConsultationCTA({ onBookNow }: ConsultationCTAProps) {
   return (
-    <section className="px-4 md:px-8 bg-background relative overflow-hidden">
+    <section className="px-4 md:px-8 py-16 md:py-24 lg:py-28 bg-background relative overflow-hidden">
       {/* Subtle Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-accent/5 rounded-full blur-[130px] pointer-events-none" />
 

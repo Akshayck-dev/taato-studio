@@ -79,10 +79,10 @@ export default function Portfolio({ onBookNow, previewOnly = false, onViewFullGa
     (item) => previewOnly || selectedCategory === 'All' || item.category === selectedCategory
   )
 
-  const displayedItems = previewOnly ? filteredItems.slice(0, 6) : filteredItems
+  const displayedItems = previewOnly ? filteredItems.slice(0, 4) : filteredItems
 
   return (
-    <section className="px-4 md:px-8 bg-background">
+    <section className="px-4 md:px-8 py-16 md:py-24 lg:py-28 bg-background">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center">
@@ -120,7 +120,7 @@ export default function Portfolio({ onBookNow, previewOnly = false, onViewFullGa
         )}
 
         {/* Gallery Grid & Mobile/Tablet Touch Swipe Carousel */}
-        <motion.div layout className="-mx-4 px-4 flex overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:mx-0 md:px-0 md:pb-0 gap-5">
+        <motion.div layout className={`-mx-4 px-4 flex overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 md:grid md:grid-cols-2 ${previewOnly ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} md:mx-0 md:px-0 md:pb-0 gap-5`}>
           <AnimatePresence mode="popLayout">
             {displayedItems.map((item) => (
               <motion.div

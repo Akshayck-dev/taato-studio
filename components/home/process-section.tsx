@@ -58,7 +58,7 @@ export default function ProcessSection({ onBookNow }: ProcessSectionProps) {
   const Icon = current.icon
 
   return (
-    <section className="px-4 md:px-8 bg-background relative overflow-hidden">
+    <section className="px-4 md:px-8 py-16 md:py-24 lg:py-28 bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-12">

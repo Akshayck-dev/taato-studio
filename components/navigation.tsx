@@ -27,7 +27,7 @@ export default function Navigation({ currentPage, setCurrentPage, onBookingClick
   }, [])
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious()
+    const previous = scrollY.getPrevious() || 0
     // Hide nav if scrolling down and past the first 150px
     if (latest > 150 && latest > previous) {
       setHidden(true)
@@ -44,7 +44,6 @@ export default function Navigation({ currentPage, setCurrentPage, onBookingClick
     { label: 'Services', page: 'services' },
     { label: 'Pricing', page: 'pricing' },
     { label: 'Contact', page: 'contact' },
-    { label: 'Admin', page: 'admin' },
   ]
 
   const handleNavClick = (page: string) => {
@@ -151,14 +150,14 @@ export default function Navigation({ currentPage, setCurrentPage, onBookingClick
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 lg:hidden bg-background flex flex-col pt-24 px-6 pb-8 overflow-y-auto"
+            className="fixed inset-0 z-40 lg:hidden bg-background flex flex-col pt-24 px-6 pb-6 overflow-y-auto"
           >
-            <div className="flex flex-col gap-4 max-w-sm mx-auto w-full flex-1 justify-center">
+            <div className="flex flex-col gap-2 max-w-sm mx-auto w-full mt-4">
               {navItems.map((item) => (
                 <button
                   key={item.page}
                   onClick={() => handleNavClick(item.page)}
-                  className={`text-center py-4 rounded-xl text-2xl font-serif transition-colors ${
+                  className={`text-center py-3 rounded-xl text-2xl font-serif transition-colors ${
                     currentPage === item.page
                       ? 'text-accent font-bold'
                       : 'text-foreground hover:text-accent'

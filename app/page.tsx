@@ -4,11 +4,14 @@ import { useState } from 'react'
 import Navigation from '@/components/navigation'
 import Hero from '@/components/hero'
 import StyleShowcase from '@/components/home/style-showcase'
-import ConsultationCTA from '@/components/home/consultation-cta'
-import Services from '@/components/services'
-import Artists from '@/components/artists'
 import Portfolio from '@/components/portfolio'
+import Artists from '@/components/artists'
+import ProcessSection from '@/components/home/process-section'
+import SafetySection from '@/components/home/safety-section'
 import Testimonials from '@/components/testimonials'
+import ConsultationCTA from '@/components/home/consultation-cta'
+
+import Services from '@/components/services'
 import Pricing from '@/components/pricing'
 import FAQ from '@/components/faq'
 import Contact from '@/components/contact'
@@ -54,20 +57,22 @@ export default function Page() {
               onViewAllArtists={() => setCurrentPage('artists')}
               onBookNow={() => setCurrentPage('booking')}
             />
+            <ProcessSection onBookNow={() => setCurrentPage('booking')} />
+            <SafetySection />
             <Testimonials />
             <ConsultationCTA onBookNow={() => setCurrentPage('booking')} />
           </>
         )}
         
         {/* Dynamic Inner Page Wrappers with Proper Spacing */}
-        {currentPage === 'services' && <div className="py-2"><Services onBookNow={() => setCurrentPage('booking')} /></div>}
-        {currentPage === 'artists' && <div className="py-2"><Artists onBookNow={() => setCurrentPage('booking')} /></div>}
-        {currentPage === 'portfolio' && <div className="py-2"><Portfolio onBookNow={() => setCurrentPage('booking')} /></div>}
-        {currentPage === 'testimonials' && <div className="py-2"><Testimonials /></div>}
-        {currentPage === 'pricing' && <div className="py-2"><Pricing onBookNow={() => setCurrentPage('booking')} /></div>}
-        {currentPage === 'aftercare' && <div className="py-2"><AftercarePage /></div>}
-        {currentPage === 'faq' && <div className="py-2"><FAQ /></div>}
-        {currentPage === 'contact' && <div className="py-2"><Contact /></div>}
+        {currentPage === 'services' && <Services onBookNow={() => setCurrentPage('booking')} />}
+        {currentPage === 'artists' && <Artists onBookNow={() => setCurrentPage('booking')} />}
+        {currentPage === 'portfolio' && <Portfolio onBookNow={() => setCurrentPage('booking')} />}
+        {currentPage === 'testimonials' && <Testimonials />}
+        {currentPage === 'pricing' && <Pricing onBookNow={() => setCurrentPage('booking')} />}
+        {currentPage === 'aftercare' && <AftercarePage />}
+        {currentPage === 'faq' && <FAQ />}
+        {currentPage === 'contact' && <Contact />}
         {currentPage === 'booking' && <BookingPage onClose={() => setCurrentPage('home')} />}
         {currentPage === 'user-dashboard' && <UserDashboard />}
         {currentPage === 'admin-dashboard' && <AdminDashboard />}

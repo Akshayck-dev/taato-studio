@@ -205,13 +205,6 @@
 
 /* Mobile (max-width: 639px) */
 @media (max-width: 639px) {
-  section {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
   button, a {
     min-height: 44px; /* WCAG touch target */
   }
@@ -223,19 +216,10 @@
 
 /* Tablet (640px – 1023px) */
 @media (min-width: 640px) and (max-width: 1023px) {
-  section {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
 }
 
 /* Desktop (1024px+) */
 @media (min-width: 1024px) {
-  section {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
-
   .desktop-hover-lift {
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
   }

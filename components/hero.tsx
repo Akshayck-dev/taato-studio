@@ -15,7 +15,7 @@ const fadeUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
   }),
 }
 
@@ -40,7 +40,7 @@ export default function Hero({ onBookNow, onViewPortfolio }: HeroProps) {
   }, [])
 
   return (
-    <section className="relative min-h-[100dvh] bg-background overflow-hidden flex items-center px-4 md:px-8 pt-32 pb-16 lg:pt-40 lg:pb-20">
+    <section className="relative min-h-[100dvh] bg-background overflow-hidden flex items-center px-4 sm:px-6 md:px-8 pt-40 sm:pt-44 md:pt-48 pb-16 sm:pb-20 md:pb-24 lg:pt-40 lg:pb-20">
       {/* Dynamic Background Image */}
       <div className="absolute inset-0 z-0 bg-black">
         

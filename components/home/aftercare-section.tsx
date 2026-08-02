@@ -29,7 +29,7 @@ const healingSteps = [
 
 export default function AftercareSection() {
   return (
-    <section className="px-4 md:px-8 bg-secondary/5 border-t border-border/40">
+    <section className="px-4 md:px-8 py-16 md:py-24 lg:py-28 bg-secondary/5 border-t border-border/40">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Summary */}

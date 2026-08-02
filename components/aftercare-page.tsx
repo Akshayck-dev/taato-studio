@@ -67,7 +67,7 @@ export default function AftercarePage() {
   return (
     <div className="space-y-16 lg:space-y-24 py-6">
       {/* Hero Header */}
-      <section className="px-4 md:px-8 text-center max-w-3xl mx-auto">
+      <section className="px-4 md:px-8 py-16 md:py-24 lg:py-28 text-center max-w-3xl mx-auto">
         <span className="text-xs font-medium text-accent tracking-wider uppercase">Ink Longevity</span>
         <h1 className="mt-3 text-foreground font-serif text-3xl md:text-5xl font-bold">Tattoo Healing & Aftercare</h1>
         <p className="mt-4 text-muted-foreground text-sm md:text-base leading-relaxed">
@@ -76,7 +76,7 @@ export default function AftercarePage() {
       </section>
 
       {/* Healing Timeline */}
-      <section className="px-4 md:px-8">
+      <section className="px-4 md:px-8 py-16 md:py-24 lg:py-28">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-xl md:text-2xl font-serif font-bold text-foreground">Healing Timeline</h2>
@@ -96,7 +96,7 @@ export default function AftercarePage() {
       </section>
 
       {/* Daily Instructions & Products */}
-      <section className="px-4 md:px-8 bg-secondary/5 py-12 border-y border-border/40">
+      <section className="px-4 md:px-8 py-16 md:py-24 lg:py-28 bg-secondary/5 border-y border-border/40">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Instructions */}
           <div className="lg:col-span-6 space-y-6">
@@ -155,7 +155,7 @@ export default function AftercarePage() {
       </section>
 
       {/* Aftercare FAQ */}
-      <section className="px-4 md:px-8 max-w-3xl mx-auto">
+      <section className="px-4 md:px-8 py-16 md:py-24 lg:py-28 max-w-3xl mx-auto">
         <h2 className="text-xl md:text-2xl font-serif font-bold text-foreground text-center mb-8">Aftercare FAQ</h2>
         <div className="space-y-4">
           {aftercareFaqs.map((faq, i) => (
