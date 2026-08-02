@@ -3,7 +3,7 @@
 import { Zap, Palette, Heart, Sparkles, Clock, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
-import ProcessSection from './home/process-section'
+
 import FAQ from './faq'
 
 const services = [
@@ -114,7 +114,6 @@ export default function Services({ previewOnly = false, onExploreServices, onBoo
       {/* Standalone Page Additions */}
       {!previewOnly && (
         <>
-          <ProcessSection onBookNow={onBookNow || (() => {})} />
           <FAQ />
           <section className="px-4 md:px-8 max-w-3xl mx-auto text-center py-6">
             <h3 className="text-lg font-serif font-bold mb-3 text-foreground">Ready to start your project?</h3>

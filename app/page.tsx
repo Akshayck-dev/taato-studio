@@ -6,8 +6,7 @@ import Hero from '@/components/hero'
 import StyleShowcase from '@/components/home/style-showcase'
 import Portfolio from '@/components/portfolio'
 import Artists from '@/components/artists'
-import ProcessSection from '@/components/home/process-section'
-import SafetySection from '@/components/home/safety-section'
+
 import Testimonials from '@/components/testimonials'
 import ConsultationCTA from '@/components/home/consultation-cta'
 
@@ -57,8 +56,6 @@ export default function Page() {
               onViewAllArtists={() => setCurrentPage('artists')}
               onBookNow={() => setCurrentPage('booking')}
             />
-            <ProcessSection onBookNow={() => setCurrentPage('booking')} />
-            <SafetySection />
             <Testimonials />
             <ConsultationCTA onBookNow={() => setCurrentPage('booking')} />
           </>
