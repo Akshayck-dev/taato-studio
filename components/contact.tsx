@@ -156,7 +156,7 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col gap-3 pt-2">
-                <Button className="w-full bg-accent hover:bg-[#FF5A5F] text-white font-medium h-11">
+                <Button className="w-full bg-accent hover:bg-[#F5C74F] text-white font-medium h-11">
                   Send Message
                 </Button>
                 <p className="text-[11px] text-center text-muted-foreground">

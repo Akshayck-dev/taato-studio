@@ -119,7 +119,7 @@ export default function Services({ previewOnly = false, onExploreServices, onBoo
             <h3 className="text-lg font-serif font-bold mb-3 text-foreground">Ready to start your project?</h3>
             <Button
               onClick={onBookNow}
-              className="bg-accent hover:bg-[#FF5A5F] text-white font-medium h-11 px-8 rounded-lg"
+              className="bg-accent hover:bg-[#F5C74F] text-white font-medium h-11 px-8 rounded-lg"
             >
               Book Consultation
             </Button>

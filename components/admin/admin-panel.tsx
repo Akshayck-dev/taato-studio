@@ -256,7 +256,7 @@ export default function AdminPanel({ onLogout }: AdminPanelProps) {
                   Real-time studio operations and active consultation metrics.
                 </p>
               </div>
-              <Button size="sm" className="bg-accent hover:bg-[#FF5A5F] text-white text-xs h-9 px-4">
+              <Button size="sm" className="bg-accent hover:bg-[#F5C74F] text-white text-xs h-9 px-4">
                 <Plus className="w-3.5 h-3.5 mr-1.5" /> New Booking
               </Button>
             </div>
@@ -525,7 +525,7 @@ export default function AdminPanel({ onLogout }: AdminPanelProps) {
                         setSelectedBooking(null)
                       }}
                       size="sm"
-                      className="bg-accent hover:bg-[#FF5A5F] text-white text-xs"
+                      className="bg-accent hover:bg-[#F5C74F] text-white text-xs"
                     >
                       Approve & Confirm
                     </Button>
@@ -546,7 +546,7 @@ export default function AdminPanel({ onLogout }: AdminPanelProps) {
                   Upload new tattoo masterpieces, set category tags, and feature top artwork.
                 </p>
               </div>
-              <Button size="sm" className="bg-accent hover:bg-[#FF5A5F] text-white text-xs h-9 px-4">
+              <Button size="sm" className="bg-accent hover:bg-[#F5C74F] text-white text-xs h-9 px-4">
                 <Plus className="w-3.5 h-3.5 mr-1.5" /> Upload New Photo
               </Button>
             </div>
@@ -587,7 +587,7 @@ export default function AdminPanel({ onLogout }: AdminPanelProps) {
                   Manage resident artist profiles, specialties, and chair schedules.
                 </p>
               </div>
-              <Button size="sm" className="bg-accent hover:bg-[#FF5A5F] text-white text-xs h-9 px-4">
+              <Button size="sm" className="bg-accent hover:bg-[#F5C74F] text-white text-xs h-9 px-4">
                 <Plus className="w-3.5 h-3.5 mr-1.5" /> Add New Artist
               </Button>
             </div>
@@ -629,7 +629,7 @@ export default function AdminPanel({ onLogout }: AdminPanelProps) {
               <Button
                 onClick={() => setIsAddServiceOpen(true)}
                 size="sm"
-                className="bg-accent hover:bg-[#FF5A5F] text-white text-xs h-9 px-4"
+                className="bg-accent hover:bg-[#F5C74F] text-white text-xs h-9 px-4"
               >
                 <Plus className="w-3.5 h-3.5 mr-1.5" /> Add New Service
               </Button>
@@ -721,7 +721,7 @@ export default function AdminPanel({ onLogout }: AdminPanelProps) {
                         }
                       }}
                       size="sm"
-                      className="bg-accent hover:bg-[#FF5A5F] text-white text-xs"
+                      className="bg-accent hover:bg-[#F5C74F] text-white text-xs"
                     >
                       Save Service
                     </Button>
@@ -770,7 +770,7 @@ export default function AdminPanel({ onLogout }: AdminPanelProps) {
                 />
               </div>
 
-              <Button size="sm" className="bg-accent hover:bg-[#FF5A5F] text-white text-xs h-9 px-5">
+              <Button size="sm" className="bg-accent hover:bg-[#F5C74F] text-white text-xs h-9 px-5">
                 Save Studio Settings
               </Button>
             </div>

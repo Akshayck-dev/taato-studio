@@ -188,7 +188,7 @@ export default function StyleShowcase({ onExplorePortfolio, onBookNow }: StyleSh
 
                 {/* Actions */}
                 <div className="flex flex-wrap gap-4 pt-6">
-                  <Button onClick={onBookNow} className="bg-accent hover:bg-[#FF5A5F] text-white font-medium h-12 px-8 rounded-xl shadow-lg transition-all hover:-translate-y-0.5 border-0">
+                  <Button onClick={onBookNow} className="bg-accent hover:bg-[#F5C74F] text-white font-medium h-12 px-8 rounded-xl shadow-lg transition-all hover:-translate-y-0.5 border-0">
                     Book This Style <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                   <Button onClick={onExplorePortfolio} variant="outline" className="border-white/20 text-white bg-black/40 hover:bg-white/10 backdrop-blur-md font-medium h-12 px-8 rounded-xl transition-all hover:-translate-y-0.5">

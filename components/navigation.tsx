@@ -118,7 +118,7 @@ export default function Navigation({ currentPage, setCurrentPage, onBookingClick
               className={`font-medium text-[13px] px-5 h-10 rounded-full transition-colors ${
                 !scrolled && currentPage === 'home'
                   ? 'bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-sm'
-                  : 'bg-accent hover:bg-[#FF5A5F] text-white shadow-sm'
+                  : 'bg-accent hover:bg-[#F5C74F] text-white shadow-sm'
               }`}
             >
               Book Consultation
@@ -174,7 +174,7 @@ export default function Navigation({ currentPage, setCurrentPage, onBookingClick
                   onBookingClick()
                   setMobileMenuOpen(false)
                 }}
-                className="w-full bg-accent hover:bg-[#FF5A5F] text-white font-medium h-14 text-lg rounded-xl"
+                className="w-full bg-accent hover:bg-[#F5C74F] text-white font-medium h-14 text-lg rounded-xl"
               >
                 Book Consultation
               </Button>

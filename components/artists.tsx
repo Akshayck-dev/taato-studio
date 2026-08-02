@@ -93,7 +93,7 @@ export default function Artists({ previewOnly = false, onViewAllArtists, onBookN
                   <Button
                     onClick={onBookNow}
                     size="sm"
-                    className="bg-accent hover:bg-[#FF5A5F] text-white text-xs h-8 px-4 font-semibold"
+                    className="bg-accent hover:bg-[#F5C74F] text-white text-xs h-8 px-4 font-semibold"
                   >
                     Book Session
                   </Button>

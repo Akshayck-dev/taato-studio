@@ -172,7 +172,7 @@ export default function PricingCalculator({ onBookEstimate }: PricingCalculatorP
                   estimate: `$${minCost} - $${maxCost}`,
                 })
               }
-              className="w-full bg-accent hover:bg-[#FF5A5F] text-white font-medium h-10 px-5 text-sm"
+              className="w-full bg-accent hover:bg-[#F5C74F] text-white font-medium h-10 px-5 text-sm"
             >
               Book With This Estimate <ArrowRight className="w-4 h-4 ml-1.5" />
             </Button>

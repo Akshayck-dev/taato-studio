@@ -117,7 +117,7 @@ export default function Hero({ onBookNow, onViewPortfolio }: HeroProps) {
           <motion.div custom={3} variants={fadeUp} initial="hidden" animate="visible" className="flex flex-wrap gap-3 pt-2">
             <Button
               onClick={onBookNow}
-              className="bg-accent hover:bg-[#FF5A5F] text-white font-medium text-[15px] px-6 h-11 rounded-lg transition-colors shadow-lg shadow-accent/20"
+              className="bg-accent hover:bg-[#F5C74F] text-white font-medium text-[15px] px-6 h-11 rounded-lg transition-colors shadow-lg shadow-accent/20"
             >
               Book Consultation
             </Button>

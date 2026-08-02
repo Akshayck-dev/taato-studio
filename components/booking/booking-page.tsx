@@ -217,7 +217,7 @@ export default function BookingPage({ onClose }: BookingPageProps) {
           <Button
             type="submit"
             form="booking-form"
-            className="w-full md:w-auto bg-accent hover:bg-[#FF5A5F] text-white font-medium h-12 px-8 rounded-xl"
+            className="w-full md:w-auto bg-accent hover:bg-[#F5C74F] text-white font-medium h-12 px-8 rounded-xl"
           >
             Submit Request
             <Send className="w-4 h-4 ml-2" />

@@ -135,7 +135,7 @@ export default function ProcessSection({ onBookNow }: ProcessSectionProps) {
                 <div className="pt-3">
                   <Button
                     onClick={onBookNow}
-                    className="bg-accent hover:bg-[#FF5A5F] text-white font-medium h-10 px-5 text-sm"
+                    className="bg-accent hover:bg-[#F5C74F] text-white font-medium h-10 px-5 text-sm"
                   >
                     Start Your Journey <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>

@@ -71,7 +71,7 @@ export default function ConsultationCTA({ onBookNow }: ConsultationCTAProps) {
               <div className="space-y-2.5">
                 <Button
                   onClick={onBookNow}
-                  className="w-full bg-accent hover:bg-[#FF5A5F] text-white font-medium h-10 px-5 text-sm"
+                  className="w-full bg-accent hover:bg-[#F5C74F] text-white font-medium h-10 px-5 text-sm"
                 >
                   Start Custom Booking <ArrowRight className="w-4 h-4 ml-1.5" />
                 </Button>

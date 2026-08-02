@@ -84,7 +84,7 @@ export default function Pricing({ onBookNow }: PricingProps) {
                 onClick={onBookNow}
                 className={`w-full font-medium h-11 ${
                   tier.highlighted
-                    ? 'bg-accent hover:bg-[#FF5A5F] text-white'
+                    ? 'bg-accent hover:bg-[#F5C74F] text-white'
                     : 'bg-secondary hover:bg-secondary/80 text-foreground border border-border'
                 }`}
               >
