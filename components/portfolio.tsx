@@ -19,7 +19,7 @@ const portfolioItems = [
     category: 'Fine Line',
     artist: 'Marcus Reid',
     time: '4 hours',
-    image: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=800&q=80',
+    image: '/gallery/geometric_tattoo_1785679216290.png',
     desc: 'Intricate 12-point sacred geometry mandala with micro-dotwork shading on forearm.',
   },
   {
@@ -28,7 +28,7 @@ const portfolioItems = [
     category: 'Watercolor',
     artist: 'Sophie Laurent',
     time: '5 hours',
-    image: 'https://images.unsplash.com/photo-1590246814885-568637649578?auto=format&fit=crop&w=800&q=80',
+    image: '/gallery/watercolor_tattoo_1785679162673.png',
     desc: 'Vibrant fluid watercolor phoenix rising with soft color gradients and zero harsh black borders.',
   },
   {
@@ -37,7 +37,7 @@ const portfolioItems = [
     category: 'Traditional',
     artist: 'James Chen',
     time: '8 hours',
-    image: 'https://images.unsplash.com/photo-1565058380561-1250325d72f9?auto=format&fit=crop&w=800&q=80',
+    image: '/gallery/irezumi_tattoo_1785679177873.png',
     desc: 'Classic Edo-period dragon sleeve featuring dynamic waves, cherry blossoms, and bold ink outlines.',
   },
   {
@@ -46,7 +46,7 @@ const portfolioItems = [
     category: 'Fine Line',
     artist: 'Elena Vasquez',
     time: '2 hours',
-    image: 'https://images.unsplash.com/photo-1542382257-80dedb725088?auto=format&fit=crop&w=800&q=80',
+    image: '/gallery/fine_line_tattoo_1785679150868.png',
     desc: 'Ultra-thin single needle anatomical flora silhouette crafted with surgical precision.',
   },
   {
@@ -55,7 +55,7 @@ const portfolioItems = [
     category: 'Realism',
     artist: 'Marcus Reid',
     time: '7 hours',
-    image: 'https://images.unsplash.com/photo-1550537687-c91072c4792d?auto=format&fit=crop&w=800&q=80',
+    image: '/gallery/realism_tattoo_1785679190624.png',
     desc: 'Photorealistic lion portrait with smooth depth, textured theme fur, and dimensional eye contrast.',
   },
   {
@@ -64,7 +64,7 @@ const portfolioItems = [
     category: 'Contemporary',
     artist: 'Sophie Laurent',
     time: '3 hours',
-    image: 'https://images.unsplash.com/photo-1568515045052-f9a854d7e4d3?auto=format&fit=crop&w=800&q=80',
+    image: '/gallery/contemporary_tattoo_1785679201505.png',
     desc: 'Modern freeform abstract linework flowing ergonomically with body contours.',
   },
 ]

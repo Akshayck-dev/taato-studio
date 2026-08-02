@@ -20,7 +20,7 @@ const stylesData = [
     rating: 4.95,
     description: 'Delicate, razor-thin lines and subtle shading for elegant, intricate minimalist art. Executed with a single needle for precision.',
     features: ['Ultra-precise single needle', 'Seamless healing', 'Ideal for wrist & ribs'],
-    image: 'https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?q=80&w=2000&auto=format&fit=crop'
+    image: '/gallery/fine_line_tattoo_1785679150868.png'
   },
   {
     id: 'black-grey',
@@ -31,7 +31,7 @@ const stylesData = [
     rating: 4.9,
     description: 'Hyper-realistic portraits, animal motifs, and smooth gradient shading with depth. A timeless aesthetic built on strong values.',
     features: ['Dimensional depth', 'Grey-scale transitions', 'Photorealistic detail'],
-    image: 'https://images.unsplash.com/photo-1560707303-4e980ce876ad?q=80&w=2000&auto=format&fit=crop'
+    image: '/gallery/realism_tattoo_1785679190624.png'
   },
   {
     id: 'irezumi',
@@ -42,7 +42,7 @@ const stylesData = [
     rating: 4.88,
     description: 'Bold linework, vibrant waves, dragons, and folklore motifs inspired by Edo masters. Authentic composition and flow.',
     features: ['Bold outlines', 'Dynamic wind/wave flow', 'Rich color saturation'],
-    image: 'https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?q=80&w=2000&auto=format&fit=crop'
+    image: '/gallery/irezumi_tattoo_1785679177873.png'
   },
   {
     id: 'watercolor',
@@ -53,7 +53,7 @@ const stylesData = [
     rating: 4.92,
     description: 'Expressive brushstrokes, soft color splashes, and freeform compositions that break the boundary of traditional outlines.',
     features: ['No harsh borders', 'Custom color blending', 'Vibrant artistic motion'],
-    image: 'https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?q=80&w=2000&auto=format&fit=crop'
+    image: '/gallery/watercolor_tattoo_1785679162673.png'
   },
 ]
 
