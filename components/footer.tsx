@@ -73,23 +73,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Newsletter */}
-        <div className="bg-white/5 border border-white/10 rounded-xl p-6 md:p-8 mb-10 flex flex-col md:flex-row items-center justify-between gap-5">
-          <div>
-            <h4 className="text-base font-semibold text-white">Stay Inspired</h4>
-            <p className="text-sm text-white/60 mt-0.5">New artist features, flash drops, and studio updates.</p>
-          </div>
-          <div className="flex w-full md:w-auto gap-2">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              className="flex-1 md:w-64 bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-accent/50 transition-colors"
-            />
-            <button className="bg-accent hover:bg-[#FF5A5F] text-white text-sm font-medium px-5 py-2.5 rounded-lg whitespace-nowrap transition-colors">
-              Subscribe
-            </button>
-          </div>
-        </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
