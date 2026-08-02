@@ -21,7 +21,6 @@ import UserDashboard from '@/components/dashboards/user-dashboard'
 import AdminDashboard from '@/components/dashboards/admin-dashboard'
 import ArtistDashboard from '@/components/dashboards/artist-dashboard'
 import { BookingProvider } from '@/contexts/booking-context'
-import ScrollToTop from '@/components/scroll-to-top'
 
 export default function Page() {
   const [currentPage, setCurrentPage] = useState('home')
@@ -82,7 +81,7 @@ export default function Page() {
       )}
 
       {/* Floating Scroll To Top Button */}
-      <ScrollToTop />
+
     </BookingProvider>
   )
 }
