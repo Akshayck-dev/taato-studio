@@ -132,22 +132,22 @@ export default function Hero({ onBookNow, onViewPortfolio }: HeroProps) {
           </motion.div>
 
           {/* Stats */}
-          <motion.div custom={4} variants={fadeUp} initial="hidden" animate="visible" className="flex flex-wrap items-center gap-6 md:gap-8 pt-6 border-t border-white/20">
+          <motion.div custom={4} variants={fadeUp} initial="hidden" animate="visible" className="flex items-center justify-between md:justify-start gap-4 md:gap-8 pt-6 border-t border-white/20 w-full max-w-sm md:max-w-none">
             <div>
-              <div className="text-2xl font-serif font-bold text-white drop-shadow-md">2,500+</div>
-              <p className="text-xs text-white/80">Custom Pieces</p>
+              <div className="text-xl sm:text-2xl font-serif font-bold text-white drop-shadow-md">2,500+</div>
+              <p className="text-[10px] sm:text-xs text-white/80">Custom Pieces</p>
             </div>
-            <div className="hidden md:block w-px h-10 bg-white/20" />
+            <div className="w-px h-8 md:h-10 bg-white/20" />
             <div>
-              <div className="text-2xl font-serif font-bold text-white drop-shadow-md">12</div>
-              <p className="text-xs text-white/80">Master Artists</p>
+              <div className="text-xl sm:text-2xl font-serif font-bold text-white drop-shadow-md">12</div>
+              <p className="text-[10px] sm:text-xs text-white/80">Master Artists</p>
             </div>
-            <div className="hidden md:block w-px h-10 bg-white/20" />
-            <div className="w-full md:w-auto mt-2 md:mt-0">
-              <div className="flex items-center gap-1 text-2xl font-serif font-bold text-white drop-shadow-md">
-                4.96 <Star className="w-4 h-4 fill-accent text-accent" />
+            <div className="w-px h-8 md:h-10 bg-white/20" />
+            <div>
+              <div className="flex items-center gap-1 text-xl sm:text-2xl font-serif font-bold text-white drop-shadow-md">
+                4.96 <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-accent text-accent" />
               </div>
-              <p className="text-xs text-white/80">Client Rating</p>
+              <p className="text-[10px] sm:text-xs text-white/80">Client Rating</p>
             </div>
           </motion.div>
         </div>
